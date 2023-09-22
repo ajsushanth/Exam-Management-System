@@ -1,6 +1,6 @@
-# Exam Management System
+# Login and Registration
 
-This is a simple console-based Exam Management System written in C++. The system allows users to log in, register, and recover their passwords. It stores user credentials in a file called "records.txt."
+This is a simple console-based login and registration system written in C++. The system allows users to log in, register, and recover their passwords. It stores user credentials in a file called "records.txt."
 
 ## Features
 
@@ -11,7 +11,7 @@ This is a simple console-based Exam Management System written in C++. The system
 
 ## Getting Started
 
-Follow the instructions below to get started with the Exam Management System:
+Follow the instructions below to get started with the Login and registration system:
 
 1. Clone this repository to your local machine:
 
@@ -22,7 +22,7 @@ Follow the instructions below to get started with the Exam Management System:
 2. Compile the C++ code:
 
    ```bash
-   g++ Login_and_registration.cpp -o exam_management_system
+   g++ Login_and_registration.cpp -o login_registration_system
    ```
 
 3. Run the program:
@@ -42,7 +42,7 @@ Upon running the program, you will be presented with a menu to choose from the f
 
 ## File Structure
 
-- `main.cpp`: Contains the main code for the Exam Management System.
+- `Login_and_registration.cpp`: Contains the main code for the login and registration system
 - `records.txt`: Text file where user credentials are stored.
 
 ## Contributing
@@ -51,7 +51,7 @@ Contributions to this project are welcome. If you have suggestions or would like
 
 ## Acknowledgments
 
-- This project was created as a simple example of an Exam Management System.
+- This project was created as a simple example of an login and registration system.
 - Thanks to the C++ community for their support and contributions.
 
 ---
