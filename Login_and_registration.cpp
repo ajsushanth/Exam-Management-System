@@ -16,7 +16,7 @@ int main(){
     cout << "\t | Press 1 to Login              |" << endl;
     cout << "\t | Press 2 to Register           |" << endl;
     cout << "\t | Press 3 to Forgot Password    |" << endl;
-    cout << "\t | Press 4 to Exit              |" << endl;
+    cout << "\t | Press 4 to Exit               |" << endl;
     cout << "Enter your choice: ";
     cin >> c;
     cout << endl;
@@ -70,8 +70,25 @@ void registration(){
     system("cls");
     cout << "\t\t\t Enter the Username: ";
     cin >> ruserId;
+
     cout << "\t\t\t Enter the Password: ";
     cin >> rpassword;
+    if(ruserId.size() < 8){
+        cout << "Username is not long enough" << endl;
+        main();
+    }
+    if(rpassword.size() < 8){
+        cout << "Password is too weak" << endl;
+        main();
+    }
+    ifstream input("records.txt"); //already registered user's credentials are stored in "records.txt" file
+
+    while(input >> rid){
+        if(ruserId == rid){
+            cout << "Username already registered" << endl << "Please select Login or register a different username" << endl;
+            main();
+        }
+    }
 
     ofstream f1("records.txt", ios::app); //ios->input/output stream, app->append mode
     f1 << ruserId << ' ' << rpassword << endl;
@@ -85,7 +102,7 @@ void forgot(){
     int option;
     system("cls");
     cout << "\t\t\t Forgot Password?\n";
-    cout << "Press 1 to search yout Id by Username" << endl;
+    cout << "Press 1 to search your Id by Username" << endl;
     cout << "Press 2 to go back to the main menu" << endl;
     cout << "\t\t\t Enter your choice: ";
     cin >> option;
@@ -93,25 +110,20 @@ void forgot(){
         case 1:{
             int count=0;
             string suserId, sid, spass;
-            cout << "\n\t\t\t Enter the username you remembered: ";
+            cout << "\n\t\t\t Enter the username you remember: ";
             cin >> suserId;
 
             ifstream f2("records.txt");
             while(f2 >> sid >> spass){
                 if(sid == suserId){
-                    count = 1;
+                    cout << "Account found!" << endl;
+                    cout << "Password: " << spass << endl;
+                    f2.close();
+                    main();
                 }
             }
-            f2.close();
-            if(count == 1){
-                cout << "\n\n Account found! \n";
-                cout << "\n\n Password is: " << spass;
-                main();
-            }
-            else{
-                cout <<"\n\t Sorry! Account not found! \n";
-                main();
-            }
+            cout <<"\n\t Sorry! Account not found! \n";
+            main();
             break;
         }
         case 2:{
